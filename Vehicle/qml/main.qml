@@ -287,6 +287,35 @@ Vehicle {
 
         onMousePressed: followHud.stopFollowing();
 
+        Button {
+            id: alertBox
+            anchors {
+                top: parent.top
+                right: parent.right
+                margins: 5 * scaleFactor
+            }
+
+            checkable: true
+            checked: false
+            width: 50 * scaleFactor
+            height: 50 * scaleFactor
+            opacity: 0.9
+
+            background: Rectangle {
+                anchors.fill: alertBox
+                color: Material.primary
+                radius: 5 * scaleFactor
+            }
+
+            Image {
+                fillMode: Image.PreserveAspectFit
+                anchors.centerIn: parent
+                sourceSize.height: parent.height * 0.65
+                height: sourceSize.height
+                source: "qrc:/Resources/icons/xhdpi/alert.png"
+            }
+        }
+
         TableOfContents {
             id: tableOfContentsTool
             anchors {

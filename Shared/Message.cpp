@@ -276,7 +276,7 @@ Message Message::createFromGeoMessage(const QByteArray& message)
       }
       else
       {
-        attributes.insert(reader.name().toString(), reader.readElementText());
+        //attributes.insert(reader.name().toString(), reader.readElementText());
       }
     }
     else if (reader.isEndElement())

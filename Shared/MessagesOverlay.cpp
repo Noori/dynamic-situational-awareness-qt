@@ -123,6 +123,8 @@ bool MessagesOverlay::addMessage(const Message& message)
           }
           break;
         }
+      case GeometryType::Unknown:
+        break;
       }
     }
     else if (message.messageAction() == Message::MessageAction::Select)

@@ -21,7 +21,7 @@ import Esri.DSA 1.0
 DsaToolBase {
     id: tocRoot
 
-    title: "Table of contents"
+    title: "Overlays"
     clip: true
 
     // Create the controller

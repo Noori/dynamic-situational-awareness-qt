@@ -20,7 +20,7 @@ import Esri.DSA 1.0
 
 DsaToolBase {
     id: telestrateRoot
-    title: qsTr("Telestrate")
+    title: qsTr("Markup")
 
     property real scaleFactor: (Screen.logicalPixelDensity * 25.4) / (Qt.platform.os === "windows" ? 96 : 72)
 

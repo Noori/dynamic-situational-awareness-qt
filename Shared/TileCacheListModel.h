@@ -41,6 +41,8 @@ public:
   TileCacheListModel(QObject* parent = nullptr);
   ~TileCacheListModel();
 
+  void clear();
+
   bool append(const QString& pathToTileCache);
   Esri::ArcGISRuntime::TileCache* tileCacheAt(int row) const;
   QString tileCacheNameAt(int row) const;

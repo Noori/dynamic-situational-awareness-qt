@@ -32,6 +32,14 @@ TileCacheListModel::~TileCacheListModel()
 
 }
 
+void TileCacheListModel::clear()
+{
+  beginResetModel();
+  m_thumbnailUrls.clear();
+  m_tileCacheData.clear();
+  endResetModel();
+}
+
 bool TileCacheListModel::append(const QString& pathToTileCache)
 {
   QFileInfo fileInfo(pathToTileCache);
