@@ -69,9 +69,9 @@ using namespace Esri::ArcGISRuntime::Toolkit;
 
 int main(int argc, char *argv[])
 {
-#ifndef Q_OS_WIN
+//#ifndef Q_OS_WIN
   QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
-#endif
+//#endif
 
   QGuiApplication app(argc, argv);
 

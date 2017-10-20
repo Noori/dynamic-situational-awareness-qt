@@ -83,6 +83,13 @@ void Vehicle::setCoordinateConversionOptions()
     return;
 
   CoordinateConversionOptions* option = new CoordinateConversionOptions(this);
+  option->setName("MGRS");
+  option->setOutputMode(CCO::CoordinateType::CoordinateTypeMgrs);
+  option->setMgrsConversionMode(CCO::MgrsConversionModeAutomatic);
+
+  controller->addOption(option);
+
+  option = new CoordinateConversionOptions(this);
   option->setName("DDM");
   option->setOutputMode(CCO::CoordinateType::CoordinateTypeLatLon);
   option->setLatLonFormat(CCO::LatitudeLongitudeFormat::LatitudeLongitudeFormatDegreesDecimalMinutes);
@@ -105,11 +112,11 @@ void Vehicle::setCoordinateConversionOptions()
 
   controller->addOption(option);
 
-  option = new CoordinateConversionOptions(this);
-  option->setName("DMS");
-  option->setOutputMode(CCO::CoordinateType::CoordinateTypeLatLon);
-  option->setLatLonFormat(CCO::LatitudeLongitudeFormat::LatitudeLongitudeFormatDegreesMinutesSeconds);
-  option->setDecimalPlaces(12);
+//  option = new CoordinateConversionOptions(this);
+//  option->setName("DMS");
+//  option->setOutputMode(CCO::CoordinateType::CoordinateTypeLatLon);
+//  option->setLatLonFormat(CCO::LatitudeLongitudeFormat::LatitudeLongitudeFormatDegreesMinutesSeconds);
+//  option->setDecimalPlaces(12);
 
-  controller->addOption(option);
+//  controller->addOption(option);
 }

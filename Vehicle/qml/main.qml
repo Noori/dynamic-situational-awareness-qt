@@ -201,13 +201,16 @@ Vehicle {
                     source: "qrc:/Resources/icons/xhdpi/ic_menu_video_dark_d.png"
                 }
 
+//                onClicked: {
+//                    if (drawer.visible)
+//                        drawer.close();
+//                    else {
+//                        toolRect.state = "analysis";
+//                        drawer.open();
+//                    }
+//                }
                 onClicked: {
-                    if (drawer.visible)
-                        drawer.close();
-                    else {
-                        toolRect.state = "analysis";
-                        drawer.open();
-                    }
+                    analysisTool.visible = !analysisTool.visible;
                 }
             }
 
@@ -329,6 +332,19 @@ Vehicle {
             onClosed: visible = false;
         }
 
+        Analysis {
+            id: analysisTool
+            anchors {
+                left: parent.left
+                top: parent.top
+                bottom: sceneView.attributionTop
+            }
+            width: drawer.width
+            visible: false
+
+            onClosed: visible = false;
+        }
+
         TelestrateTool {
             id: telestrateTool
             anchors {
@@ -372,14 +388,14 @@ Vehicle {
                             target: messageFeedsTool
                             visible: true
                         }
-                    },
+                    }/*,
                     State {
                         name: "analysis"
                         PropertyChanges {
                             target: analysisTool
                             visible: true
                         }
-                    }
+                    }*/
                 ]
 
                 BasemapPicker {
@@ -405,12 +421,12 @@ Vehicle {
                     onClosed: drawer.close();
                 }
 				
-                Analysis {
-                    id: analysisTool
-                    anchors.fill: parent
-                    visible: false
-                    onClosed: drawer.close();
-                }
+//                Analysis {
+//                    id: analysisTool
+//                    anchors.fill: parent
+//                    visible: false
+//                    onClosed: drawer.close();
+//                }
             }
         }
 
