@@ -23,9 +23,7 @@ DsaPanel {
     title: qsTr("Alert Conditions")
     clip: true
 
-    AlertConditionsController {
-        id: toolController
-        active: manageAlertsRoot.visible
+    controller: AlertConditionsController {
         onPickedElement: {
             for (var i = 0; i < targetCB.count; ++i) {
                 if (targetCB.textAt(i) === overlayName)
@@ -35,11 +33,6 @@ DsaPanel {
                     break;
                 }
             }
-        }
-
-        onActiveChanged: {
-            if (!active && manageAlertsRoot.visible)
-                manageAlertsRoot.visible = false;
         }
     }
 
@@ -125,7 +118,7 @@ DsaPanel {
 
             font.pixelSize: DsaStyles.toolFontPixelSize * scaleFactor
             textRole: "display"
-            model: toolController.levelNames
+            model: controller.levelNames
             currentIndex: -1
 
             Text {
@@ -242,7 +235,7 @@ DsaPanel {
 
             font.pixelSize: DsaStyles.toolFontPixelSize * scaleFactor
             textRole: "display"
-            model: toolController.sourceNames
+            model: controller.sourceNames
             currentIndex: -1
 
             Text {
@@ -419,7 +412,7 @@ DsaPanel {
             OverlayButton {
                 id: pickButton
                 enabled: singleFeatureRb.checked
-                selected: toolController.pickMode
+                selected: controller.pickMode
                 iconUrl: DsaResources.iconGps
                 opacity: enabled ? 1.0 : 0.8
                 anchors.verticalCenter: featureIdEdit.verticalCenter
@@ -439,7 +432,7 @@ DsaPanel {
             font.pixelSize: DsaStyles.toolFontPixelSize * scaleFactor
 
             textRole: "display"
-            model: toolController.targetNames
+            model: controller.targetNames
             currentIndex: -1
 
             Text {
@@ -538,7 +531,7 @@ DsaPanel {
             right: parent.right
         }
 
-        model: toolController.conditionsList
+        model: controller.conditionsList
         currentIndex: -1
 
         delegate: ListItemDelegate {

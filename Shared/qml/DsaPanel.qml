@@ -24,6 +24,23 @@ Rectangle {
     signal closed()
     property string iconSource: DsaResources.iconClose
     color: Material.primary
+    property var controller: null
+
+    onVisibleChanged: {
+        if (controller === null)
+            return;
+
+        if (controller.active !== visible)
+            controller.active = visible;
+    }
+
+    Connections {
+        target: controller
+        onActiveChanged: {
+            if (!controller.active && dsaPanel.visible)
+                dsaPanel.visible = false;
+        }
+    }
 
     Column {
         id: titleBar
