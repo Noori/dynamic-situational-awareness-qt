@@ -28,6 +28,7 @@
 #include "ArcGISTiledLayer.h"
 #include "ArcGISVectorTiledLayer.h"
 #include "Raster.h"
+#include "RasterElevationSource.h"
 
 // Toolkit
 #include "AbstractTool.h"
@@ -70,8 +71,8 @@ DsaController::DsaController(QObject* parent):
   connect(m_scene, &Scene::errorOccurred, this, &DsaController::onError);
 
   // set an elevation source
-  ArcGISTiledElevationSource* source = new ArcGISTiledElevationSource(QUrl(m_dsaSettings["DefaultElevationSource"].toString()), this);
-  connect(source, &ArcGISTiledElevationSource::errorOccurred, this, &DsaController::onError);
+  RasterElevationSource* source = new RasterElevationSource(QStringList() << m_dsaSettings["DefaultElevationSource"].toStringList()[0], this);
+  connect(source, &RasterElevationSource::errorOccurred, this, &DsaController::onError);
   m_scene->baseSurface()->elevationSources()->append(source);
 }
 
@@ -346,7 +347,7 @@ void DsaController::createDefaultSettings()
   m_dsaSettings["ResourceDirectory"] = QString("%1/ResourceData").arg(m_dsaSettings["RootDataDirectory"].toString());
   writeDefaultLocalDataPaths();
   m_dsaSettings["DefaultBasemap"] = QStringLiteral("topographic");
-  m_dsaSettings["DefaultElevationSource"] = QString("%1/CaDEM.tpk").arg(m_dsaSettings["ElevationDirectory"].toString());
+  m_dsaSettings["DefaultElevationSource"] = QString("%1/6p5.tif").arg(m_dsaSettings["OperationalData_SD"].toString());
   m_dsaSettings["GpxFile"] = QString("%1/MontereyMounted.gpx").arg(m_dsaSettings["SimulationDirectory"].toString());
   m_dsaSettings["SimulateLocation"] = QStringLiteral("true");
   writeDefaultMessageFeeds();

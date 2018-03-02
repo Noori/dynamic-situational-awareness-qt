@@ -125,10 +125,10 @@ private:
   bool m_viewshedVisibleDefault = true;
   QStringList m_viewshedTypes;
   int m_viewshedTypeIndex = 0;
-  double m_minDistanceDefault = 10;
-  double m_maxDistanceDefault = 500;
+  double m_minDistanceDefault = 4;
+  double m_maxDistanceDefault = 300;
   double m_horizontalAngleDefault = 120;
-  double m_verticalAngleDefault = 90;
+  double m_verticalAngleDefault = 120;
   double m_headingDefault = 0;
   double m_headingOffsetDefault = 0;
   double m_pitchDefault = 90;

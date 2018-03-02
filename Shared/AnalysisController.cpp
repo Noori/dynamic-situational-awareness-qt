@@ -158,7 +158,7 @@ void AnalysisController::updateMyLocationViewshed()
       auto geoElementViewshed = new GeoElementViewshed(locationGraphic, m_horizontalAngleDefault, m_verticalAngleDefault,
                                                        m_minDistanceDefault, m_maxDistanceDefault, 0.0, 0.0, this);
 
-      geoElementViewshed->setOffsetZ(10.0);
+      geoElementViewshed->setOffsetZ(1.0);
       m_currentViewshed = geoElementViewshed;
       m_viewsheds[m_viewshedTypeIndex] = geoElementViewshed;
       geoElementViewshed->setVisible(m_viewshedVisibleDefault);
@@ -229,7 +229,7 @@ void AnalysisController::createViewsheds360Offsets()
   auto geoElementViewshedOffset1 = new GeoElementViewshed(geoElement, 120.0, m_verticalAngleDefault,
                                                           m_minDistanceDefault, m_maxDistanceDefault, 120.0, 0.0, this);
 
-  geoElementViewshedOffset1->setOffsetZ(5.0);
+  geoElementViewshedOffset1->setOffsetZ(1.0);
   geoElementViewshedOffset1->setVisible(m_viewshedVisibleDefault);
   m_analysisOverlay->analyses()->append(geoElementViewshedOffset1);
   m_viewsheds360Offsets.append(geoElementViewshedOffset1);
@@ -237,7 +237,7 @@ void AnalysisController::createViewsheds360Offsets()
   auto geoElementViewshedOffset2 = new GeoElementViewshed(geoElement, 120.0, m_verticalAngleDefault,
                                                           m_minDistanceDefault, m_maxDistanceDefault, 240.0, 0.0, this);
 
-  geoElementViewshedOffset2->setOffsetZ(5.0);
+  geoElementViewshedOffset2->setOffsetZ(1.0);
   geoElementViewshedOffset2->setVisible(m_viewshedVisibleDefault);
   m_analysisOverlay->analyses()->append(geoElementViewshedOffset2);
   m_viewsheds360Offsets.append(geoElementViewshedOffset2);
@@ -626,7 +626,7 @@ void AnalysisController::setViewshed360Override(bool viewshed360Override)
     createViewsheds360Offsets();
 
   m_currentViewshed->setHorizontalAngle(120.0);
-  m_currentViewshed->setVerticalAngle(90.0);
+  m_currentViewshed->setVerticalAngle(m_verticalAngleDefault);
 
   emit horizontalAngleChanged();
   emit verticalAngleChanged();
