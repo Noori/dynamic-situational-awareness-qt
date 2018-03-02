@@ -85,29 +85,29 @@ DsaPanel {
         }
         spacing: 1 * scaleFactor
 
-//        Label {
-//            text: "Filter:"
-//            font.pixelSize: 12 * scaleFactor
-//            color: Material.foreground
-//            visible: false
-//        }
+        Label {
+            text: "Filter:"
+            font.pixelSize: 12 * scaleFactor
+            color: Material.foreground
+            visible: false
+        }
 
-//        ComboBox {
-//            id: filter
-//            model: toolController.fileFilterList
-//            width: parent.width
-//            visible: false
-//            onCurrentTextChanged: {
-//                selectedItems = [];
-//                toolController.refreshLocalDataModel(currentText);
-//            }
-//        }
+        ComboBox {
+            id: filter
+            model: toolController.fileFilterList
+            width: parent.width
+            visible: false
+            onCurrentTextChanged: {
+                selectedItems = [];
+                toolController.refreshLocalDataModel(currentText);
+            }
+        }
 
         CheckBox {
             id: elevationCheckbox
             text: "Add as elevation source"
             checked: false
-            //visible: filter.currentText.indexOf("Raster") !== -1 || filter.currentText.indexOf("All")  !== -1 || filter.currentText.indexOf("tpk") !== -1
+            visible: filter.currentText.indexOf("Raster") !== -1 || filter.currentText.indexOf("All")  !== -1 || filter.currentText.indexOf("tpk") !== -1
             contentItem: Label {
                 text: elevationCheckbox.text
                 font: elevationCheckbox.font
