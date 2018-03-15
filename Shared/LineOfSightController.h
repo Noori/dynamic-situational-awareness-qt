@@ -44,8 +44,6 @@ class LineOfSightController : public Esri::ArcGISRuntime::Toolkit::AbstractTool
   Q_PROPERTY(QAbstractItemModel* overlayNames READ overlayNames NOTIFY overlayNamesChanged)
   Q_PROPERTY(bool analysisVisible READ isAnalysisVisible WRITE setAnalysisVisible NOTIFY analysisVisibleChanged)
   Q_PROPERTY(int visibleByCount READ visibleByCount NOTIFY visibleByCountChanged)
-  Q_PROPERTY(int notVisibleByCount READ notVisibleByCount NOTIFY notVisibleByCountChanged)
-  Q_PROPERTY(int unknownCount READ unknownCount NOTIFY unknownCountChanged)
 
 public:
 
@@ -72,16 +70,12 @@ signals:
   void lineOfSightFromLocationToGeoElement(Esri::ArcGISRuntime::GeoElement* geoElement);
 
   int visibleByCount() const;
-  int notVisibleByCount() const;
-  int unknownCount();
 
 signals:
   void toolErrorOccurred(const QString& errorMessage, const QString& additionalMessage);
   void overlayNamesChanged();
   void analysisVisibleChanged();
   void visibleByCountChanged();
-  void notVisibleByCountChanged();
-  void unknownCountChanged();
 
 public slots:
   void onGeoViewChanged(Esri::ArcGISRuntime::GeoView* geoView);
@@ -94,8 +88,6 @@ private:
   void cancelTask();
   void getLocationGeoElement();
   void setVisibleByCount(int visibleByCount);
-  void setNotVisibleByCount(int notVisibleByCount);
-  void setUnknownCount(int unknownCount);
 
   QStringListModel* m_overlayNames;
   Esri::ArcGISRuntime::GeoView* m_geoView = nullptr;
@@ -107,8 +99,6 @@ private:
   QMetaObject::Connection m_queryFeaturesConnection;
   bool m_analysisVisible = true;
   int m_visibleByCount = 0;
-  int m_notVisibleByCount = 0;
-  int m_unknownCount = 0;
   QList<QMetaObject::Connection> m_visibleByConnections;
 };
 
