@@ -11,8 +11,7 @@
 //
 
 #include <QSettings>
-#include <QApplication>
-//#include <QGuiApplication>
+#include <QGuiApplication>
 #include <QQuickView>
 #include <QCommandLineParser>
 #include <QDir>
@@ -84,10 +83,10 @@ QObject* dsaResourcesProvider(QQmlEngine* engine, QJSEngine* scriptEngine);
 int main(int argc, char *argv[])
 {
 #ifndef Q_OS_WIN
-  QApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
+  QGuiApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 #endif
 
-  QApplication app(argc, argv);
+  QGuiApplication app(argc, argv);
 
   QCoreApplication::setApplicationName(kApplicationName);
   QCoreApplication::setApplicationVersion(kApplicationVersion);
